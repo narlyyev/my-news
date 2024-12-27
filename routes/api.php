@@ -20,4 +20,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('v1')->group(function () {
     Route::get('news', [NewsController::class, 'index']);
+    Route::get('news/{item}', [NewsController::class, 'show']);
 });

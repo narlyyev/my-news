@@ -12,10 +12,22 @@ class NewsController extends Controller
         $news = News::query()
             ->with('author')
             ->orderBy('id', 'desc')
-            ->get();
+            ->get([
+                'id',
+                'name',
+                'image',
+                'user_id'
+            ]);
 
         return response()->json([
             'news' => $news
+        ]);
+    }
+
+    public function show(News $item)
+    {
+        return response()->json([
+            'item' => $item
         ]);
     }
 }
